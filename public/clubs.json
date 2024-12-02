@@ -1,0 +1,27 @@
+[
+    { "name": "ACM Club", "image": "/images/acm1.png", "link": "acm" },
+    { "name": "Adventure Club", "image": "/images/adventure1.png", "link": "adventure" },
+    { "name": "Agraga Club", "image": "/images/agraga1.png", "link": "agraga" },
+    { "name": "Automobile Club", "image": "/images/automobile1.png", "link": "automobile" },
+    { "name": "Culinary Club", "image": "/images/culinary1.png", "link": "culinary" },
+    { "name": "Enactus Club", "image": "/images/enactus1.png", "link": "Enactus/enactus.html" },
+    { "name": "Environment Club", "image": "/images/environment1.png", "link": "Environment/environment.html" },
+    { "name": "Finonomics Club", "image": "/images/finonomics1.png", "link": "Finonomics/finonomics.html" },
+    { "name": "Insights Club", "image": "/images/insights1.png", "link": "Insights/insights.html" },
+    { "name": "Liquid Club", "image": "/images/liquid1.png", "link": "Liquid/liquid.html" },
+    { "name": "Mrityunjay Club", "image": "/images/mrityunjay1.png", "link": "Mrityunjaya/mrityunjay.html" },
+    { "name": "NSS Club", "image": "/images/nss1.png", "link": "NSS/nss.html" },
+    { "name": "PAC Club", "image": "/images/pac1.png", "link": "PAC/pac.html" },
+    { "name": "PFA Club", "image": "/images/pfa1.png", "link": "PFA/pfa.html" },
+    { "name": "Robotics Club", "image": "/images/robotics1.png", "link": "Robotics/robotics.html" },
+    { "name": "SATA Club", "image": "/images/sata1.png", "link": "Sata/sata.html" },
+    { "name": "Savera Club", "image": "/images/savera1.png", "link": "Savera/savera.html" },
+    { "name": "Scimat Club", "image": "/images/scimat1.png", "link": "Scimat/scimat.html" },
+    { "name": "Sierra Club", "image": "/images/sierra1.png", "link": "Sierra/sierra.html" },
+    { "name": "Social Media Club", "image": "/images/smc1.png", "link": "SMC/smc.html" },
+    { "name": "Strokes Club", "image": "/images/strokes1.png", "link": "Strokes/strokes.html" },
+    { "name": "TSEC Club", "image": "/images/tsec1.png", "link": "TSEC/tsec.html" },
+    { "name": "Wellness & Fight Club", "image": "/images/wnf1.png", "link": "WNF/wnf.html" },
+    { "name": "Youth Red Cross Club", "image": "/images/yrc1.png", "link": "YRC/yrc.html" }
+
+]

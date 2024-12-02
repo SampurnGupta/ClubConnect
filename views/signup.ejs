@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Connect - Sign Up</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .signup-box {
+            background: #75B116;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            text-align: left;
+        }
+
+        .logo {
+            width: 200px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        h2 {
+            color: #1f1f1f;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            color: #1f1f1f;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #0a3f59;
+            box-shadow: 0 0 5px rgba(10, 63, 89, 0.5);
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #527c0d;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .signup-btn:hover {
+            background-color: #0e9442;
+        }
+
+        .separator {
+            margin: 20px 0;
+            color: #1f1f1f;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .signup-text {
+            color: #1f1f1f;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .signup-text a {
+            color: #0a3f59;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .signup-box {
+                padding: 20px;
+            }
+
+            .logo {
+                width: 120px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-box">
+            <img src="images/club_connect.png" alt="Club Connect Logo" class="logo">
+            <h2>Create a New Account</h2>
+            <!-- Removed method and action attributes -->
+            <form id="signupForm">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email Address/Phone Number</label>
+                <input type="text" id="email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                
+                <div class="separator">*Password must be at least 8 characters</div>
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                
+                <button type="submit" class="signup-btn">Sign Up</button>
+            </form>
+            <div class="separator">or</div>
+            <p class="signup-text">
+                Already have an account? <a href="/login">Login now.</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="/scripts/signup.js"></script>
+</body>
+</html>

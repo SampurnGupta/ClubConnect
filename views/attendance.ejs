@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Records</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        @media (max-width: 600px) {
+            th, td {
+                font-size: 14px;
+                padding: 8px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <h1>Attendance Records</h1>
+    <br>
+
+    <!-- Create Attendance Form -->
+    <div class="container">
+        <h2>Add New Attendance</h2>
+        <form id="createForm">
+            <input type="text" id="eventName" placeholder="Event Name" required>
+            <input type="text" id="venue" placeholder="Venue" required>
+            <input type="date" id="date" required>
+            <select id="status" required>
+                <option value="">Select Status</option>
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+            <button type="submit">Add Attendance</button>
+        </form>
+    </div>
+
+    <!-- Displaying attendance table -->
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Event Name</th>
+                    <th>Venue of Event</th>
+                    <th>Date of Event</th>
+                    <th>Attendance</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% attendance.forEach((record, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= record.eventName %></td>
+                        <td><%= record.venue %></td>
+                        <td><%= record.date %></td>
+                        <td><%= record.status %></td>
+                        <td>
+                            <button onclick="editRecord('<%= record._id %>')">Edit</button>
+                            <button onclick="deleteRecord('<%= record._id %>')">Delete</button>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Update Attendance Modal -->
+    <div id="updateModal" style="display:none;">
+        <h2>Edit Attendance</h2>
+        <form id="updateForm">
+            <input type="hidden" id="updateId">
+            <input type="text" id="updateEventName" placeholder="Event Name" required>
+            <input type="text" id="updateVenue" placeholder="Venue" required>
+            <input type="date" id="updateDate" required>
+            <select id="updateStatus" required>
+                <option value="">Select Status</option>
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+            <button type="submit">Update Attendance</button>
+            <button type="button" onclick="closeUpdateModal()">Cancel</button>
+        </form>
+    </div>
+
+    <script src="/scripts/attendance.js"></script> <!-- Corrected file name -->
+</body>
+</html>

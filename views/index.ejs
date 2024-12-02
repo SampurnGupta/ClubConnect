@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clubs at BMU</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #aed4fa;
+            min-width: 1200px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #375f6cea;
+            height: 30px;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+        }
+
+        .bml-logo {
+            width: 100px; /* Adjust the size as needed */
+            height: auto;
+            margin-right: 10px; /* Space between logos */
+        }
+
+        nav {
+            margin-left: auto;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #fff;
+            transition: color 0.3s ease; /* Smooth transition for text color */
+        }
+
+        nav ul li a:hover {
+            color: #B1E5B3; /* Change text color on hover */
+        }
+
+        .profile-icon img {
+            padding-top: 3px;
+            width: 25px;
+            border-radius: 50%;
+            transition: transform 0.3s ease; /* Smooth transition for profile icon */
+        }
+
+        .profile-icon img:hover {
+            transform: scale(1.1); /* Scale effect on hover */
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            min-width: 1200px;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            background-color: #375F6C;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 5px;
+            transition: background-color 0.3s ease; /* Smooth transition for button */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #B1E5B3;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease; /* Smooth transition for dropdown links */
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .dropdown-content.clubs {
+            width: 400px;
+            height: auto;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
+            right: -110px;
+        }
+
+        .dropdown-content.credits {
+            width: 200px;
+            height: 100px;
+            right: -15px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: grid;
+        }
+
+        .search-section {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .search-section input[type="search"] {
+            padding: 10px;
+            border-radius: 30px;
+            width: 600px;
+            height: 40px;
+            background-color: #d6f9d8;
+            border: none;
+            transition: background-color 0.3s ease; /* Smooth transition for search bar */
+        }
+
+        .search-section input[type="search"]:focus {
+            background-color: #ebe7ff; /* Change background color on focus */
+        }
+
+        .clubs-section {
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .clubs-container {
+            background: linear-gradient(180deg, #6EB8D0 0%, #6CB5CD 38%, #385E6A 69%);
+            border-radius: 20px;
+            padding: 20px;
+            width: 80%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .clubs-container h1 {
+            font-size: 2em;
+            color: white;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+
+        .club-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: white;
+            transition: transform 0.3s ease; /* Smooth transition for club logos */
+        }
+
+        .club-logo:hover {
+            transform: scale(1.1); /* Scale effect on hover */
+        }
+
+        .vertical-buttons {
+            position: fixed;
+            right: 14px;
+            top: 5%;
+            display: flex;
+            border-radius: 10px;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        .join-button,
+        .event-button { /* Combined styles for both buttons */
+            padding: 10px 20px;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            transform: rotate(-90deg);
+            transform-origin: right center;
+            background-color: #375F6C;
+            color: white;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for buttons */
+        }
+
+        .join-button:hover,
+        .event-button:hover {
+            background-color: #B1E5B3; /* Change background color on hover */
+            transform: rotate(-90deg) scale(1.05); /* Scale effect on hover */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center; /* Align logos vertically */
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .logo {
+            width: 300px;
+            height: auto;
+            transition: transform 0.3s ease; /* Smooth transition for main logo */
+        }
+
+        .logo:hover {
+            transform: scale(1.1); /* Scale effect on hover */
+        }
+        /* Suggestions box styling */
+        .suggestions-box {
+            position: absolute;
+            background-color: #fff;
+            width: 600px;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 5px;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .suggestion-item:hover {
+            background-color: #d6f9d8;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <button class="dropbtn">Clubs</button>
+                        <div class="dropdown-content clubs">
+                            <!-- Removed LoadingAnimation redirect -->
+                            <a href="/acm">ACM</a>
+                            <a href="/adventure">Adventure</a>
+                            <a href="/agraga">Agraga</a>
+                            <a href="/automobile">Automobile</a>
+                            <a href="/culinary">Culinary</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <button class="dropbtn">Credits</button>
+                        <div class="dropdown-content credits">
+                            <a href="/enrichment_credits.html">Enrichment Credits</a>
+                            <a href="/attendance.html">Attendance</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="profile-icon">
+                <a href="/signup">  
+                    <img src="/images/pfp.png" alt="Profile Icon" class="profile-icon">
+                </a>
+            </div>
+        </div>
+        <div class="logo-container">
+            <a href="https://www.bmu.edu.in/" target="_blank"><img src="/images/BML_Munjal_University-Logo.png" alt="BML Munjal University Logo" class="bml-logo"></a>
+            <a href="/index"><img src="/images/club_connect.png" alt="Club Connect Logo" class="logo"></a>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <input type="search" placeholder="Search" id="clubSearch" oninput="showSuggestions(this.value)">
+        <div id="suggestions" class="suggestions-box"></div>
+    </section>
+    
+    <script>
+        // Array of available clubs
+        const clubs = [
+            "ACM", "Adventure", "Agraga", "Automobile", "Culinary"
+        ];
+    
+        // Function to show suggestions based on user input
+        function showSuggestions(input) {
+            const suggestionsBox = document.getElementById('suggestions');
+            suggestionsBox.innerHTML = ''; // Clear previous suggestions
+            if (input.length === 0) return; // Hide box if input is empty
+    
+            const filteredClubs = clubs.filter(club => club.toLowerCase().includes(input.toLowerCase()));
+    
+            filteredClubs.forEach(club => {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.classList.add('suggestion-item');
+                suggestionItem.textContent = club;
+                suggestionItem.onclick = () => {
+                    document.getElementById('clubSearch').value = club;
+                    suggestionsBox.innerHTML = ''; // Clear suggestions
+                    // Redirect directly to the specific club's page
+                    window.location.href = `/${club.toLowerCase()}/${club.toLowerCase()}.html`;
+                };
+                suggestionsBox.appendChild(suggestionItem);
+            });
+        }
+
+        
+    </script>
+    
+    <section class="clubs-section">
+        <div class="clubs-container">
+            <h1>CLUBS AT BMU</h1>
+            <div class="clubs-grid" id="clubsGrid">
+                <!-- Clubs will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+        
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("/clubs.json") // Updated fetch path to access clubs.json from the public directory
+                .then(response => response.json())
+                .then(clubs => {
+                    const clubsGrid = document.getElementById("clubsGrid");
+                    clubs.forEach(club => {
+                        const clubLink = document.createElement("a");
+                        // Redirect directly to the club's page
+                        clubLink.href = `/${club.link}`;
+    
+                        const clubImage = document.createElement("img");
+                        // Use the image path directly from clubs.json
+                        clubImage.src = club.image; // Ensure club.image is correctly set in clubs.json
+                        clubImage.alt = club.name;
+                        clubImage.className = "club-logo";
+    
+                        clubLink.appendChild(clubImage);
+                        clubsGrid.appendChild(clubLink);
+                    });
+                })
+                .catch(error => console.error("Error loading club data:", error));
+        });
+    </script>
+    
+
+    <section class="vertical-buttons">
+        <a href="/join.html" class="join-button">Join A Club</a>
+        <a href="/Upcoming_events.html" class="event-button">Club Events</a>
+    </section>
+</body>
+</html>  

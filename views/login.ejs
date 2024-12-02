@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Connect - Login</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Space between login box and images */
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .login-box,
+        .image-slider {
+            background: #537a90;
+            max-width: 400px;
+            width: 100%;
+            height: 500px; /* Fixed height to match both */
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .login-box {
+            padding: 40px;
+            text-align: left;
+        }
+
+        .logo {
+            width: 150px;
+            margin: 0 auto 15px;
+            display: block;
+        }
+
+        h2 {
+            color: #0e0e0e;
+            margin-bottom: 40px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            color: #fff;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid #fff;
+            margin-bottom: 20px;
+            font-size: 14px;
+            background: transparent;
+            color: #fff;
+        }
+
+        input:focus {
+            outline: none;
+            border-bottom: 2px solid #0a3f59;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #0a3f59;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #082d3f;
+        }
+
+        .separator {
+            margin: 20px 0;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .signup-text {
+            color: white;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .signup-text a {
+            color: #0a3f59;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+
+        .image-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure entire image fits without cropping */
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            border-radius: 15px;
+        }
+
+        .image-slider img.active {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .login-box,
+            .image-slider {
+                height: auto; /* Allow height to adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Box -->
+        <div class="login-box">
+            <a href="LoadingAnimation.html?redirect=../html/index.html">
+                <img src="images/club_connect.png" alt="Club Connect Logo" class="logo">
+            </a>            
+            <h2>Login To Your Account</h2>
+            <form id="loginForm">
+                <label for="email">Email Address/Phone Number</label>
+                <input type="text" id="email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <div class="separator">or</div>
+            <p class="signup-text">
+                Don't have an account? <a href="/signup">Sign up now.</a>
+            </p>
+        </div>
+
+        <!-- Image Slider -->
+        <div class="image-slider">
+            <img src="images/login1.jpeg" alt="Login Image 1" class="active">
+            <img src="images/login2.jpeg" alt="Login Image 2">
+            <img src="images/login3.jpeg" alt="Login Image 3">
+            <img src="images/login4.jpeg" alt="Login Image 4">
+            <img src="images/login5.jpeg" alt="Login Image 5">
+        </div>
+    </div>
+
+    <script src="/scripts/login.js"></script>
+    <script>
+        // JavaScript for auto-slideshow
+        const images = document.querySelectorAll('.image-slider img');
+        let currentIndex = 0;
+
+        function changeImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        // Change image every 3 seconds
+        setInterval(changeImage, 3000);
+    </script>
+</body>
+</html>
